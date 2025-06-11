@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Événements - Les 400 Coups</title>
+<style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .events-container {
+      display: grid;
+      grid-template-columns: repeat(3, 240px);
+      gap: 20px;
+      justify-content: center;
+  max-width: 760px;
+  margin: 0 auto;
+    }
+    .event-card {
+      background-color: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 10px;
+      width: 220px;
+      height: 350px;
+      text-align: center;
+    }
+    .event-card img {
+      width: 220px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .event-title {
+      font-weight: bold;
+      color: #6cf;
+      margin-top: 8px;
+      white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+    }
+    .event-date {
+      color: #ccc;
+      margin: 4px 0;
+    }
+    .event-location, .event-description {
+      font-size: 14px;
+      color: #aaa;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+    }
+    a {
+      color: #6cf;
+      text-decoration: none;
+    }
+  
+  <style>
+    .highlight-card {
+      background-color: #222;
+      border: 3px solid red;
+      border-radius: 10px;
+      padding: 12px;
+      width: 260px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .highlight-card img {
+      width: 220px;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+      border-radius: 4px;
+    }
+    .highlight-card .event-title {
+      font-weight: bold;
+      color: #f66;
+      margin-top: 8px;
+    }
+    .highlight-card .event-date {
+      color: #ccc;
+      margin: 4px 0;
+    }
+    .highlight-card .event-location,
+    .highlight-card .event-description {
+      font-size: 14px;
+      color: #bbb;
+    }
+  
+#highlightEvent {
+    width: 450px;
+    margin: 0 auto;
+    border: 2px solid #fff;
+    border-radius: 16px;
+    padding: 10px;
+    text-align: center;
+}
+#highlightEvent img {
+    display: block;
+    margin: 0 auto;
+}
+#highlightEvent .event-title,
+#highlightEvent .event-date,
+#highlightEvent .event-description {
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<h2 style="text-align:center; color:crimson;">🎯 Prochainement !</h2>
+<div id="highlightEvent" style="display: flex; justify-content: center; margin-bottom: 30px;"></div>
+<h1>🎭 Événements</h1>
+<h2 style="text-align:center;">🎟️ À venir</h2>
+<div class="events-container" id="futureEvents"></div>
+<h2 style="text-align:center;">📁 Passés</h2>
+<div class="events-container" id="pastEvents"></div>
+<footer><a href="index.html">← Retour à l’accueil</a></footer>
+<script src="events_tableau_complet.js"></script>
+<script>
+function createCard(ev) {
+  const link = document.createElement("a");
+  link.href = "evenement.html?id=" + encodeURIComponent(ev.id);
+  link.style.textDecoration = "none";
+
+  const div = document.createElement("div");
+  div.className = ev.highlight ? "highlight-card" : "event-card";
+  div.innerHTML = `
+    <img src="${ev.affiche}" alt="${ev.titre}">
+    <div class="event-title">${ev.titre}</div>
+    <div class="event-date">${ev.date}</div>
+  `;
+  link.appendChild(div);
+  return link;
+}
+        </script>
+<script>
+const today = new Date().toISOString().split('T')[0];
+
+events_tableau.forEach(ev => {
+  if (ev.highlight) {
+    const container = document.getElementById("highlightEvent");
+    if (container) {
+      container.appendChild(createCard(ev));
+    }
+  } else if (ev.date_iso >= today) {
+    const future = document.getElementById("futureEvents");
+    if (future) {
+      future.appendChild(createCard(ev));
+    }
+  } else {
+    const past = document.getElementById("pastEvents");
+    if (past) {
+      past.appendChild(createCard(ev));
+    }
+  }
+});
+</script></body>
+</html>

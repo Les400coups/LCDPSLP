@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Détail de la personne</title>
+  <style>
+  
+    body { font-family: sans-serif; padding: 20px; max-width: 600px; margin: auto; background-color: black; color: white; }
+    img { max-width: 100%; height: auto; border-radius: 10px; }
+    h1 { text-align: center; }
+    p, #bio { text-align: center; }
+    #bio {
+  text-align: center;
+  margin: 1.5rem auto 0;
+  max-width: 90%;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  min-height: 400px;
+  object-fit: cover;
+}
+#photo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+  </style>
+</head>
+<body>
+  <h1 id="nom"></h1>
+  <img id="photo" src="" alt="">
+  <p id="bio"></p>
+  <p style="text-align:center;"><a href="a-propos.html">← Retour à la page précédente</a></p>
+
+  <script src="bio.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    const nomAffichés = {
+      nina: "Nina Després",
+      lilou: "Lilou De Burlet",
+      eric: "Eric Brod",
+      fred: "Frédéric Dubuisson",
+      
+    };
+
+    const photos = {
+      nina: "images/1nina.jpg",
+      lilou: "images/1lilou.jpg",
+      eric: "images/1eric.jpg",
+      fred: "images/1fred.jpg",
+      
+    
+    };
+
+    if (id && bios[id]) {
+      document.getElementById("nom").textContent = nomAffichés[id] || id;
+      document.getElementById("photo").src = photos[id];
+      document.getElementById("photo").alt = nomAffichés[id] || id;
+      document.getElementById("bio").textContent = bios[id];
+    } else {
+      document.body.innerHTML = "<p>Personne non trouvée.</p>";
+    }
+  </script>
+</body>
+</html>

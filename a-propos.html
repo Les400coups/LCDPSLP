@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Qui sommes-nous – Les 400 Coups</title>
+  <link href="css/style.css" rel="stylesheet" />
+  <style>
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      padding: 2rem;
+      text-align: center;
+    }
+    .team-member img {
+      max-width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 15px;
+    }
+    .team-member h3 {
+      margin-top: 0.5rem;
+    }
+    .team-member p {
+      font-size: 0.95em;
+      text-align: center;
+      max-height: 7.5em;
+      overflow: hidden;
+      line-height: 1.5em;
+    }
+    .bio {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tooltip {
+      position: fixed;
+      display: none;
+      background-color: rgba(150, 150, 150, 0.9);
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 280px;
+      font-size: 0.95em;
+      line-height: 1.3em;
+      z-index: 1000;
+      pointer-events: none;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img alt="Logo Les 400 Coups" class="logo" src="images/logo.png" style="max-width: 400; display: block; margin: 2rem auto;" />
+  </header>
+  <main>
+    <h1 style="text-align:center;">Qui sommes-nous</h1>
+    <section class="team-grid">
+      <div class="team-member">
+        <a href="personne.html?id=nina"><img alt="Nina" src="images/1nina.jpg" data-personne="nina" /></a>
+        <h3>Nina</h3>
+        <p class="bio" id="bio-nina"></p>
+      </div>
+      
+      <div class="team-member">
+        <a href="personne.html?id=lilou"><img alt="Lilou" src="images/1lilou.jpg" data-personne="lilou" /></a>
+        <h3>Lilou</h3>
+        <p class="bio" id="bio-lilou"></p>
+      </div>
+      
+      <div class="team-member">
+        <a href="personne.html?id=eric"><img alt="Eric" src="images/1eric.jpg" data-personne="eric" /></a>
+        <h3>Eric</h3>
+        <p class="bio" id="bio-eric"></p>
+      </div>
+      
+      <div class="team-member">
+        <a href="personne.html?id=fred"><img alt="Fred" src="images/1fred.jpg" data-personne="fred" /></a>
+        <h3>Frédéric</h3>
+        <p class="bio" id="bio-fred"></p>
+      </div>
+      
+      
+      </div>
+    </section>
+    <p style="text-align:center;"><a href="index.html">← Retour à l’accueil</a></p>
+  </main>
+
+  <div class="tooltip" id="tooltip"></div>
+
+  <script src="bio.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      for (const id in bios) {
+        const el = document.getElementById("bio-" + id);
+        if (el) el.textContent = bios[id];
+
+        const img = document.querySelector('img[data-personne="' + id + '"]');
+      if (img) {
+  img.dataset.tooltip = bios[id]; // on stocke le texte sans déclencher la bulle native
+}
+      }
+
+      const tooltip = document.getElementById('tooltip');
+      const members = document.querySelectorAll('.team-member img');
+
+      members.forEach(img => {
+        img.addEventListener('mousemove', function (e) {
+          tooltip.style.display = 'block';
+tooltip.textContent = img.dataset.tooltip;
+          tooltip.style.top = (e.clientY + 15) + 'px';
+          tooltip.style.left = (e.clientX + 15) + 'px';
+        });
+        img.addEventListener('mouseleave', function () {
+          tooltip.style.display = 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
