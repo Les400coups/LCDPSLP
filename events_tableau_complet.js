@@ -8,6 +8,31 @@ const events_tableau = [
 */
 
 
+{
+    id: "24-10-2025",
+    titre: "J'aime beaucoup ce que vous faites.",
+    date: "Le 24 Octobre 2025 à 20h",
+    date_iso: "2025-10-24",
+    lieu: "Les Automnales de Vernouillet",
+    description: "Comment une fausse manœuvre avec un téléphone portable vous fait découvrir ce que vos meilleurs amis pensent de vous en réalité, juste avant leur arrivée pour un week-end finalement pas comme les autres dans votre maison de campagne... <br><a href='mailto:reservation@courantdart.net'>reservation@courantdart.net</a>",
+    affiche: "images/Affiches/20251024.png",
+        highlight: false
+
+  },
+
+ {
+    id: "12-10-2025",
+    titre: "J'aime beaucoup ce que vous faites.",
+    date: "Le 12 Octobre 2025 à 20h30",
+    date_iso: "2025-10-12",
+    lieu: "Salle des Arts de Villennes sur Seine",
+    description: "Comment une fausse manœuvre avec un téléphone portable vous fait découvrir ce que vos meilleurs amis pensent de vous en réalité, juste avant leur arrivée pour un week-end finalement pas comme les autres dans votre maison de campagne... <br><a href='mailto:reservation@courantdart.net'>reservation@courantdart.net</a>",
+    affiche: "images/Affiches/20251012.png",
+        highlight: false
+
+  },
+
+
   {
     id: "26-06-2025",
     titre: "J'aime beaucoup ce que vous faites.",
@@ -19,16 +44,19 @@ const events_tableau = [
         highlight: true
 
   },
-  {
-    id: "27-06-2025",
-    titre: "Les 400 Coups au Boucanier",
-    date: "27 juin 2025 à 21h",
-    date_iso: "2025-06-27",
-    lieu: "<span style='color:red'>Le Boucanier</span>  <br>Allée des Iles Tabarly <br>78200 Mantes-la-Jolie. <br>Restaurant dès 19h30. <br>Réservation :<br> <a href='https://www.leboucanier.net' target='_blank'>www.leboucanier.net</a><br> 01.30.63.70.30",
-    description: "Improviser, c'est possible. <br>Chanter, c'est possible. <br>Mais improviser en chantant ? <br> Bah c'est possible !",
-    affiche: "images/Affiches/affiche_27_06_2025.jpg",
+  
+  
+  
+   {
+    id: "22-06-2023",
+    titre: "Toc Toc",
+    date: "Le 22 Juin 2023 à 20h30",
+    date_iso: "2023-06-22",
+    lieu: "Espace Bosco - Vernouillet",
+    description: "Sept patients atteints de troubles obsessionnels compulsifs, Gilles de la Tourette, arithmomanie, nosophobie, tocs de vérification, fascination pour la symétrie, écholalie et paranoïa se retrouvent dans la salle d'attente du Dr Stern. <br>Êtes vous prêts pour cette thérapie complètement toquée ?!<br><a href='mailto:reservation@courantdart.net'>reservation@courantdart.net</a>",
+    affiche: "images/Affiches/20230622.jpg",
         highlight: false
- 
+
   }
   
   
